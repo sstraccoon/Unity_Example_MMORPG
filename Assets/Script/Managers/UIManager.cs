@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class UIManager
 {
+    // 화면에 나오는 우선순위
     int _order = 10;
 
+    // 팝업 UI 담을 스택
     Stack<UI_Popup> _popupStack = new Stack<UI_Popup>();
+    // 씬 UI??
     UI_Scene _sceneUI = null;
 
+    // 최상위 root 생성
     public GameObject Root
     {
         get
@@ -20,6 +24,7 @@ public class UIManager
         }
     }
 
+    // 캔버스 생성 및 순서 정의
     public void SetCanvas(GameObject go, bool sort = true)
     {
         Canvas canvas = Util.GetOrAddComponent<Canvas>(go);
@@ -37,6 +42,7 @@ public class UIManager
         }
     }
 
+    // 
     public T MakeSubItem<T>(Transform parent = null, string name = null) where T : UI_Base
     {
         if (string.IsNullOrEmpty(name))
@@ -108,5 +114,11 @@ public class UIManager
     {
         while (_popupStack.Count > 0)
             ClosePopupUI();
+    }
+
+    public void Clear()
+    {
+        CloseAllPopupUI();
+        _sceneUI = null;
     }
 }

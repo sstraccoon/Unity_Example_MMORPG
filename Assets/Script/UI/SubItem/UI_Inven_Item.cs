@@ -6,6 +6,7 @@ using UnityEngine;
 public class UI_Inven_Item : UI_Base
 {
 
+    // enum의 내용이 별로 없다면 GameObjects로 뭉뚱그려도 된다.
     enum GameObjects
     {
         ItemIcon,

@@ -8,14 +8,16 @@ public class Managers : MonoBehaviour
 
     static Managers Instance { get { Init(); return s_Instance; } }
     
-
     InputManager _input = new InputManager();
     ResourceManager _resource = new ResourceManager();
+    SceneMangerEx _scene = new SceneMangerEx();
+    SoundManager _sound = new SoundManager();
     UIManager _ui = new UIManager();
     public static InputManager Input { get { return Instance._input; } }
     public static ResourceManager Resource { get { return Instance._resource; } }
+    public static SceneMangerEx Scene { get { return Instance._scene; } }
+    public static SoundManager Sound { get { return Instance._sound; } }
     public static UIManager UI { get { return Instance._ui; } }
-    
     
     void Start()
     {
@@ -27,9 +29,8 @@ public class Managers : MonoBehaviour
         _input.OnUpdate();
     } 
 
-
     static void Init() 
-    { 
+    {  
         if (s_Instance == null)
         {
             GameObject go = GameObject.Find("@Managers");
@@ -41,6 +42,16 @@ public class Managers : MonoBehaviour
 
             DontDestroyOnLoad(go);
             s_Instance = go.GetComponent<Managers>();
+
+            s_Instance._sound.Init();
         }
+    }
+
+    public static void Clear()
+    {
+        Sound.Clear();
+        Input.Clear();
+        Scene.Clear();
+        UI.Clear();
     }
 }

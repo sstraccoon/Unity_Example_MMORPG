@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public abstract class BaseSence : MonoBehaviour
+public abstract class BaseScene : MonoBehaviour
 {
     public Define.Scene SceneType { get; protected set; } = Define.Scene.Unknown;
 
@@ -11,6 +11,8 @@ public abstract class BaseSence : MonoBehaviour
     {
         
     }
+
+    // virtualÀ» »ç¿ë
     protected virtual void Init()
     {
         Object obj = GameObject.FindObjectOfType(typeof(EventSystem));

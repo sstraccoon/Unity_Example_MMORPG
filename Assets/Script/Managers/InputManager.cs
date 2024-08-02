@@ -13,13 +13,15 @@ public class InputManager
 
     public void OnUpdate()
     {
+        // ?
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 
+        // 입력이 있거나 Action을 참조 하는자가 있다면.
         if (Input.anyKey != false && KeyAction != null)
             KeyAction.Invoke();
 
-        if (MouseAction != null)
+        if (MouseAction != null) 
         {
             if (Input.GetMouseButton(0))
             {
@@ -33,5 +35,11 @@ public class InputManager
                 _pressed = false;
             }
         }
+    }
+
+    public void Clear()
+    {
+        KeyAction = null;
+        MouseAction = null;
     }
 }

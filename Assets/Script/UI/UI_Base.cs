@@ -8,10 +8,16 @@ using UnityEngine.UI;
 
 public abstract class UI_Base : MonoBehaviour
 {
+    // 유니티의 모든 오브젝트를 저장 가능.
+    // Type이 뭐지??
     protected Dictionary<Type, UnityEngine.Object[]> _objects = new Dictionary<Type, UnityEngine.Object[]>();
 
     public abstract void Init();
 
+    // type으로 들어온 값의 이름을 뽑아내고 그 수만큼을 저장할 objects 배열을 만든다 
+    // 그것을 _objects 구조체에 담는다.
+    // ex) <Button, objects[]>
+    // gameobject면 그대로, 아니면 컴포넌트를 넣는다.
     protected void Bind<T>(Type type) where T : UnityEngine.Object
     {
         string[] names = Enum.GetNames(type);
@@ -45,6 +51,7 @@ public abstract class UI_Base : MonoBehaviour
     protected Image GetImage(int idx) { return Get<Image>(idx); }
 
     // action 에서 invoke 할때 매개변수로 PointerEventData를 주기 때문에 해당 매개 변수가 있는 함수를 넣어야 됨
+    // action에는 함수가 들어 가면 됨
     public static void BindEvent(GameObject go, Action<PointerEventData> action, Define.UIEvent type = Define.UIEvent.Click)
     {
         UI_EventHandler evt = Util.GetOrAddComponent<UI_EventHandler>(go);

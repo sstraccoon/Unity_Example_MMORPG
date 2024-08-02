@@ -31,8 +31,8 @@ public class UI_Inven : UI_Scene
             //item.AddComponent<UI_Inven_Item>();
             Util.GetOrAddComponent<UI_Inven_Item>(item);
 
-            UI_Inven_Item ivenitem = item.GetOrAddComponent<UI_Inven_Item>();
-            ivenitem.SetInfo($"집행검{i} 번");
+            UI_Inven_Item invenitem = item.GetOrAddComponent<UI_Inven_Item>();
+            invenitem.SetInfo($"집행검{i} 번");
         }
     }
 }

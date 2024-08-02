@@ -21,11 +21,13 @@ public class Util
         return transfrom.gameObject;
     }
 
+    // go의 자식 오브젝트의 이름으로 name을 검사해서 component를 찾는다.
     public static T FindChild<T>(GameObject go, string name = null, bool recursive = false) where T : UnityEngine.Object
     {
         if (go == null)
             return null;
 
+        // 재귀 아닌 상태
         if (recursive == false)
         {
             for (int i = 0; i < go.transform.childCount; i++)
@@ -39,8 +41,10 @@ public class Util
                 }
             }
         }
+        // 재귀 상태
         else
         {
+            // GetComponentsInChildren<T>를 통해 모든 자식의 컴포넌트를 추출
             foreach (T component in go.GetComponentsInChildren<T>())
             {
                 if (string.IsNullOrEmpty(name) || component.name == name)

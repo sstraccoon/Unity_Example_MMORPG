@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameScene : BaseSence
+public class GameScene : BaseScene
 {
 
     void Start()
@@ -25,8 +25,7 @@ public class GameScene : BaseSence
     }
 
     public override void Clear()
-    {
-        throw new System.NotImplementedException();
-    }
+    { 
 
+    }
 }
